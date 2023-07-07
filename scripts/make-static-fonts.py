@@ -6,18 +6,11 @@ import subprocess
 from pathlib import Path
 
 import cffsubr
-import fontTools.designspaceLib
-import fontTools.designspaceLib.split
 import fontTools.ttLib
-import instantiator
+import fontTools.designspaceLib
 import ufo2ft
 
-try:
-    import pathops
-
-    have_pathops = True
-except ImportError:
-    have_pathops = False
+import instantiator
 
 
 def generate_and_write_autohinted_instance(
@@ -38,7 +31,7 @@ def generate_and_write_autohinted_instance(
     instance_font = ufo2ft.compileOTF(
         instance,
         removeOverlaps=True,
-        overlapsBackend="pathops" if have_pathops else "booleanOperations",
+        overlapsBackend="pathops",
         inplace=True,
         useProductionNames=True,
         optimizeCFF=ufo2ft.CFFOptimization.NONE,
@@ -72,10 +65,6 @@ if __name__ == "__main__":
         for s in designspace.instances
         if s.lib.get("com.schriftgestaltung.export", True)
     ]
-
-    # 1.5. Fill in style names, etc.
-    converted_designspaces = fontTools.designspaceLib.split.convert5to4(designspace)
-    designspace = converted_designspaces["Cantarell-VF"]
 
     # 2. Prepare masters.
     generator = instantiator.Instantiator.from_designspace(
