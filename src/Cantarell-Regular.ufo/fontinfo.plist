@@ -31,7 +31,7 @@
     <key>openTypeHeadCreated</key>
     <string>2009/03/13 21:44:13</string>
     <key>openTypeNameDesigner</key>
-    <string>Dave Crossland, Nikolaus Waxweiler, Jacques Le Bailly, Eben Sorkin, Alexei Vanyashin</string>
+    <string>Dave Crossland, Nikolaus Waxweiler, Florian Fecher, Jacques Le Bailly, Eben Sorkin, Alexei Vanyashin, Alexios Zavras, Emilios Theofanous, Irene Vlachou</string>
     <key>openTypeNameLicense</key>
     <string>This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL</string>
     <key>openTypeNameLicenseURL</key>
@@ -49,6 +49,22 @@
       <integer>0</integer>
       <integer>0</integer>
     </array>
+    <key>openTypeOS2SubscriptXOffset</key>
+    <integer>0</integer>
+    <key>openTypeOS2SubscriptXSize</key>
+    <integer>700</integer>
+    <key>openTypeOS2SubscriptYOffset</key>
+    <integer>218</integer>
+    <key>openTypeOS2SubscriptYSize</key>
+    <integer>650</integer>
+    <key>openTypeOS2SuperscriptXOffset</key>
+    <integer>0</integer>
+    <key>openTypeOS2SuperscriptXSize</key>
+    <integer>700</integer>
+    <key>openTypeOS2SuperscriptYOffset</key>
+    <integer>369</integer>
+    <key>openTypeOS2SuperscriptYSize</key>
+    <integer>650</integer>
     <key>openTypeOS2Type</key>
     <array/>
     <key>openTypeOS2VendorID</key>
@@ -92,7 +108,7 @@
     <key>versionMajor</key>
     <integer>0</integer>
     <key>versionMinor</key>
-    <integer>201</integer>
+    <integer>303</integer>
     <key>xHeight</key>
     <integer>482</integer>
   </dict>
