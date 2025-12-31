@@ -16,13 +16,11 @@ import fontTools.ttLib
 import ufo2ft
 import ufoLib2
 from clean_font import clean_font
+from skip_autohinting import SKIP_AUTOHINTING
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "designspace_path", type=Path, help="The path to the Designspace file."
-)
-parser.add_argument(
-    "stylespace_path", type=Path, help="The path to the Stylespace file."
 )
 parser.add_argument(
     "otfautohint_path", type=Path, help="The path to the otfautohint executable."
@@ -31,7 +29,6 @@ parser.add_argument("output_path", type=Path, help="The variable TTF output path
 args = parser.parse_args()
 
 designspace_path = args.designspace_path.resolve()
-stylespace_path = args.stylespace_path.resolve()
 output_path = args.output_path.resolve()
 otfautohint_path = args.otfautohint_path.resolve()
 
@@ -60,7 +57,14 @@ varfont.save(output_path)
 clean_font(output_path)
 
 # 4. Autohint
-subprocess.check_call([os.fspath(args.otfautohint_path), os.fspath(output_path)])
+subprocess.check_call(
+    [
+        os.fspath(args.otfautohint_path),
+        "--exclude-glyphs",
+        ",".join(SKIP_AUTOHINTING),
+        os.fspath(output_path),
+    ]
+)
 
 # 5. Subroutinize (compress)
 varfont = fontTools.ttLib.TTFont(output_path)
